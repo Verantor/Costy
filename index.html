@@ -22,8 +22,9 @@
         var price = (fPrice / fWeight);
         var CoM =  (fDensity * 3.14 * ((d / 2) * (d / 2)) * fLengh * price);
         var CoP = (eConsumption * pTime) * (ePrice / 1000);
-        var result = CoM + CoP;
-        document.getElementById('result').innerHTML =(Math.round(result * 100) / 100) * (100% + markup)  + "€";
+        var result = (CoM + CoP) * (1 + markup / 100) ;
+
+        document.getElementById('result').innerHTML =(Math.round(result * 100) / 100) + "€";
 
 
     }
