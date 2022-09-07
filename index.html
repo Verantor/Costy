@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Costy</title>
+</head>
+<link rel="stylesheet" href="css.css">
+<script>
+    function Calc() {
+        const fWeight = document.getElementById('fWeight').value;
+        const fDensity = document.getElementById('fDensity').value;
+        const fLengh = document.getElementById('fLengh').value;
+        const fPrice = document.getElementById('fPrice').value;
+        const pTime = document.getElementById('pTime').value;
+        const ePrice = document.getElementById('ePrice').value;
+        const eConsumption = document.getElementById('eConsumption').value;
+        //PLA
+        var d = 1.75; //diameter
+        var price = (fPrice / fWeight);
+        var CoM =  (fDensity * 3.14 * ((d / 2) * (d / 2)) * fLengh * price);
+        var CoP = (eConsumption * pTime) * (ePrice / 1000);
+        var result = CoM + CoP;
+        document.getElementById('result').innerHTML =Math.round(result * 100) / 100  + "€";
+
+
+    }
+
+
+</script>
+
+<body>
+    <h1>Costy</h1>
+
+
+
+    <div class="input-container">
+        <label for="fWeight">Filament Weight</label>
+        <input type="number" id="fWeight" name="fWeight" value="1000">
+    </div>
+    <div class="input-container">
+        <div class="tooltip">
+            <span class="tooltiptext">
+                <table>
+                    <tr>
+                        <td>ABS</td>
+                        <td>1.05</td>
+                    </tr>
+                    <tr>
+                        <td>PLA</td>
+                        <td>1.27</td>
+                    </tr>
+                    <tr>
+                        <td>PETG</td>
+                        <td>1.25</td>
+                    </tr>
+                    <tr>
+                        <td>PETT</td>
+                        <td>1.45</td>
+                    </tr>
+                    <tr>
+                        <td>HIPS</td>
+                        <td>1.04</td>
+                    </tr>
+                    <tr>
+                        <td>TPU</td>
+                        <td>1.30</td>
+                    </tr>
+                </table>
+            </span>
+            <label for="fDensity">Filament Density</label>
+            <input type="number" id="fDensity" name="fDensity" value="1.27">
+        </div>
+
+
+    </div>
+
+    <div class="input-container">
+        <label for="fLengh">Filament lengh</label>
+        <input type="number" id="fLengh" name="fLengh" value="18.01">
+    </div>
+
+    <div class="input-container">
+        <label for="fPrice">Filament price</label>
+        <input type="number" id="fPrice" name="fPrice" value="20">
+    </div>
+
+
+    <h2>Printing Time</h2>
+    <div class="input-container">
+        <label for="pTime">Printing time</label>
+        <input type="number" id="pTime" name="pTime" value="1">
+    </div>
+    <h2>Cost per Hour</h2>
+    <div class="input-container">
+        <label for="ePrice">Energy price per K/Wh</label>
+        <input type="number" id="ePrice" name="ePrice" value="0.30">
+    </div>
+    <div class="input-container">
+        <label for="eConsumption">Watt Consumption</label>
+        <input type="number" id="eConsumption" name="eConsumption" value="150">
+    </div>
+    <br>
+
+    <button onclick="Calc()">Calculate</button>
+    <h1 id="result"></h1>
+
+
+
+</body>
+
+</html>
